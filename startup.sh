@@ -5,12 +5,12 @@ profile=$1
 container_name="55g-eureka-live"
 image_name="55g-eureka-server"
 spring_env="live"
-server_port=8100
+server_port=8761
 
 if [ "$profile" == "--dev" ]; then
 	container_name="55g-eureka-dev"
 	spring_env="dev"
-	server_port=8200
+	server_port=8762
 fi
 
 cd $ABSOLUTE_PATH
