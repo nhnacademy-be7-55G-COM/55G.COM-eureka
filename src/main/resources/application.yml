@@ -17,6 +17,30 @@ eureka:
     service-url:
       defaultZone: http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/
 
+55g:
+  log:
+    path: .
+
+---
+spring:
+  config:
+    activate:
+      on-profile: live
+
+logging:
+  file:
+    name: ${55g.log.path}/eureka-live.log
+  logback:
+    rollingpolicy:
+      max-history: 100
+      file-name-pattern: ${55g.log.path}/eureka-live-%d{yyyy-MM-dd_HH:mm}.%i.log
+      max-file-size: 100KB
+  level:
+    root: info
+    shop.S5G.shop: info
+55g:
+  log:
+    path: /logs/live/eureka
 ---
 spring:
   config:
@@ -30,3 +54,18 @@ eureka:
   client:
     service-url:
       defaultZone: http:/${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/
+logging:
+  file:
+    name: ${55g.log.path}/eureka-dev.log
+  logback:
+    rollingpolicy:
+      max-history: 10
+      file-name-pattern: ${55g.log.path}/eureka-dev-%d{yyyy-MM-dd}.%i.log
+      max-file-size: 100KB
+  level:
+    root: debug
+    shop.S5G.shop: trace
+
+55g:
+  log:
+    path: /logs/dev/eureka
