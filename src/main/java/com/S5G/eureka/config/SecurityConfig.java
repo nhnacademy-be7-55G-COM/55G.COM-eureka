@@ -1,5 +1,6 @@
 package com.S5G.eureka.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -17,6 +18,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Value("${eureka.user.name}")
+    private String username;
+
+    @Value("${eureka.user.password}")
+    private String password;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -38,8 +45,8 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.builder()
-            .username("admin")
-            .password(passwordEncoder().encode("1234"))
+            .username(username)
+            .password(passwordEncoder().encode(password))
             .roles("ADMIN")
             .build();
 

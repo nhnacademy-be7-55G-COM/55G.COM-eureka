@@ -3,17 +3,19 @@ spring:
     name: eureka
 
 server:
-  shutdown: graceful # 서버 종료 방식 설정
+  #  shutdown: graceful # 서버 종료 방식 설정
   port: 8761
 
 eureka:
-  server:
-    enable-self-preservation: true
+  user:
+    name: admin
+    password: 1234
+
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/
 
 ---
 spring:
@@ -27,4 +29,4 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8762/eureka/
+      defaultZone: http:/${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/
