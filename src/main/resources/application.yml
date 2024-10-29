@@ -1,12 +1,12 @@
 spring:
   profiles:
-    active: default
+    active: dev
 
   application:
     name: eureka
 
   config:
-    import: configserver:http://admin:55g.com7@localhost:9000
+    import: configserver:http://localhost:9000
 
   cloud:
     config:
