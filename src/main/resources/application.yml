@@ -18,8 +18,7 @@ spring:
     activate:
       on-profile: live
 
-    import:
-      configserver:http://55g-config-live:9000
+    import: configserver:http://55g-config-live:9000
 
 ---
 spring:
