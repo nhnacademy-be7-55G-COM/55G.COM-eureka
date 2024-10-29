@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: default
 
   application:
     name: eureka
@@ -11,3 +11,20 @@ spring:
   cloud:
     config:
       label: main
+
+---
+spring:
+  config:
+    activate:
+      on-profile: live
+
+    import:
+      configserver:http://55g-config-live:9000
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+    import: configserver:http://55g-config-dev:9050
