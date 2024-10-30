@@ -5,12 +5,13 @@ spring:
   application:
     name: eureka
 
-  config:
-    import: configserver:http://localhost:9000
+#  config:
+#    import: configserver:http://localhost:9000
 
   cloud:
     config:
       label: main
+
 
 ---
 spring:
@@ -27,3 +28,29 @@ spring:
       on-profile: dev
 
     import: configserver:http://55g-config-dev:9050
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+    import: configserver:http://localhost:9000
+
+---
+spring:
+  config:
+    activate:
+      on-profile: no-config
+    import: ""
+
+  cloud:
+    config:
+      import-check:
+        enabled: false
+      enabled: false
+
+eureka:
+  user:
+    name: sdfjlksladkfj
+    password: sdfjl;sajdf;aslf
