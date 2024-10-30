@@ -6,11 +6,16 @@ spring:
     name: eureka
 
   config:
-    import: configserver:http://localhost:9000
+    import: optional:configserver:http://localhost:9000
 
   cloud:
     config:
       label: main
+
+eureka:
+  user:
+    name: admin
+    password: 1234 # 나중에 config server를 통해 주입될 예정
 
 ---
 spring:
@@ -18,7 +23,7 @@ spring:
     activate:
       on-profile: live
 
-    import: configserver:http://55g-config-live:9000
+    import: optional:configserver:http://55g-config-live:9000
 
 ---
 spring:
@@ -26,4 +31,4 @@ spring:
     activate:
       on-profile: dev
 
-    import: configserver:http://55g-config-dev:9050
+    import: optional:configserver:http://55g-config-dev:9050
