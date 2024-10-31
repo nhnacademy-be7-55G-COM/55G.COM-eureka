@@ -1,19 +1,47 @@
 spring:
+  profiles:
+    active: default
+
   application:
     name: eureka
 
-server:
-  shutdown: graceful # 서버 종료 방식 설정
-  port: 8761
+  config:
+    import: optional:configserver:http://localhost:9000
+
+  cloud:
+    config:
+      label: main
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
-  server:
-    enable-self-preservation: true
+  user:
+    name: admin
+    password: 1234 # 나중에 config server를 통해 주입될 예정
+
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: "http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,busrefresh
+
+---
+spring:
+  config:
+    activate:
+      on-profile: live
+
+    import: optional:configserver:http://55g-config-live:9000
 
 ---
 spring:
@@ -21,10 +49,4 @@ spring:
     activate:
       on-profile: dev
 
-server:
-  port: 8762
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8762/eureka/
+    import: optional:configserver:http://55g-config-dev:9050
