@@ -36,3 +36,10 @@ spring:
       on-profile: dev
 
     import: optional:configserver:http://55g-config-dev:9050
+---
+spring:
+  config:
+    activate:
+      on-profile: local-docker
+
+    import: optional:configserver:http://host.docker.internal:9000
