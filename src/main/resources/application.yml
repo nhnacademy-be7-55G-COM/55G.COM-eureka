@@ -12,6 +12,12 @@ spring:
     config:
       label: main
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 eureka:
   user:
     name: admin
@@ -22,6 +28,12 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: "http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,busrefresh
 
 ---
 spring:
