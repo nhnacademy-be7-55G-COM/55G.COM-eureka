@@ -1,4 +1,4 @@
-package com.S5G.eureka.config;
+package shop.s5g.eureka.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
