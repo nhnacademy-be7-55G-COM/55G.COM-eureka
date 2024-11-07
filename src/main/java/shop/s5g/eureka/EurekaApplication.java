@@ -1,4 +1,4 @@
-package com.S5G.eureka;
+package shop.s5g.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
