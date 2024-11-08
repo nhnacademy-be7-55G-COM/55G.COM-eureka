@@ -30,7 +30,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: "http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/"
+      defaultZone: http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/
 
 management:
   endpoints:
