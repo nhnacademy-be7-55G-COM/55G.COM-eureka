@@ -50,7 +50,6 @@ docker run -d --name $container_name \
   --env SPRING_PROFILE=$spring_env \
   --env SERVER_PORT=$server_port \
   --memory="256m" --memory-swap="356m" \
-  --add-host host.docker.internal:host-gateway \
   -p $server_port:$server_port \
   -v /logs:/logs \
   $image_name-$spring_env
