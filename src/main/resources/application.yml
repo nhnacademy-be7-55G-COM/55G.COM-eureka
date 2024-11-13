@@ -13,13 +13,10 @@ spring:
       label: main
 
   rabbitmq:
-    host: ${rabbitmq.host}
-    port: 5672
-    username: guest
-    password: guest
-
-rabbitmq:
-  host: localhost
+    host: host
+    port: 0
+    username: username
+    password: password
 
 eureka:
   user:
