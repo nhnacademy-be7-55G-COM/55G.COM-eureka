@@ -7,4 +7,4 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 RUN mkdir /opt/app
 COPY target/eureka.jar /opt/app
-CMD ["java", "-Dspring.profiles.active=${SPRING_PROFILE}", "-Dserver.port=${SERVER_PORT}", "-Duser.timezone=Asia/Seoul", "-Xms128m", "-Xmx128m", "-jar", "/opt/app/eureka.jar"]
+CMD ["java", "-Dspring.profiles.active=${SPRING_PROFILE}", "-Dserver.port=${SERVER_PORT}", "-Duser.timezone=Asia/Seoul", "-Xms256m", "-Xmx256m", "-jar", "/opt/app/eureka.jar"]
