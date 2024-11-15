@@ -13,13 +13,10 @@ spring:
       label: main
 
   rabbitmq:
-    host: ${rabbitmq.host}
-    port: 5672
-    username: guest
-    password: guest
-
-rabbitmq:
-  host: localhost
+    host: host
+    port: 0
+    username: username
+    password: password
 
 eureka:
   user:
@@ -30,7 +27,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: "http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/"
+      defaultZone: http://${eureka.user.name}:${eureka.user.password}@localhost:${server.port}/eureka/
 
 management:
   endpoints:
